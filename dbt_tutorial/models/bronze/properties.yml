@@ -10,6 +10,23 @@ models:
   - name: bronze_store #  Must match the filename of a model -- including case sensitivity.
     config:
         materialized: view
+    columns: 
+          - name: store_name
+            data_tests:
+              - accepted_values: 
+                  arguments:
+                      values: ['MegaMart Manhattan','MegaMart Brooklyn',
+                                  'MegaMart Austin','MegaMart San Jose','MegaMart Toronto']
+                  config:
+                      severity: warn
+
+          - name: country
+            data_tests:
+              - accepted_values: 
+                  arguments:
+                      values: ['Canada', 'USA','Mexico']
+                  config:
+                      severity: warn
         
 
   - name : bronze_sales
@@ -19,26 +36,8 @@ models:
             - unique
             - not_null
 
-  - name : bronze_store
-    columns: 
-        - name: store_name
+        - name: gross_amount
           data_tests:
-            - accepted_values: 
-                arguments:
-                    values: ['MegaMart Manhattan','MegaMart Brooklyn',
-                                'MegaMart Austin','MegaMart San Jose','MegaMart Toronto']
-                config:
-                    severity: warn
+             - generic_non_negative
 
-        - name: country
-          data_tests:
-            - accepted_values: 
-                arguments:
-                    values: ['Canada', 'USA',Mexico]
-                config:
-                    severity: warn
-            
-
-
- 
-      
+  
