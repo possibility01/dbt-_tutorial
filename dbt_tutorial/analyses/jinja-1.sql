@@ -1,3 +1,8 @@
-{%- set var_name = "idris" -%}
+{%- set apples = ["apple1","apple2","apple3","apple4"] -%}
 
-{{ var_name }}
+{% for i in apples %}
+    {% if i != "apple2"  %}
+        {{i}}
+
+    {% endif %}       
+{% endfor %}
