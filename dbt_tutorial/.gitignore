@@ -1,20 +1,9 @@
-dbt_tutorial:
-  outputs:
-    dev:
-      catalog: dbt_tutorial_dev
-      host: dbc-0661453f-677f.cloud.databricks.com
-      http_path: /sql/1.0/warehouses/750a17b3ac6f32e6
-      schema: default
-      threads: 1
-      token: dapi4e9269092abd1113aaf8a59ec10040d5
-      type: databricks
-
-    prod:
-      catalog: dbt_tutorial_dev
-      host: dbc-0661453f-677f.cloud.databricks.com
-      http_path: /sql/1.0/warehouses/750a17b3ac6f32e6
-      schema: default
-      threads: 1
-      token: dapi4e9269092abd1113aaf8a59ec10040d5
-      type: databricks
-  target: dev
+# Create/update .gitignore in dbt_tutorial directory
+@"
+profiles.yml
+target/
+dbt_packages/
+logs/
+.env
+*.pyc
+"@ | Out-File -FilePath .gitignore -Encoding utf8
